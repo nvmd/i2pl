@@ -64,11 +64,5 @@ nfa_final_states_from_state nfa states (w:ws) = nfa_final_states_from_state nfa 
 
 -- Check, whether NFA accepts the word, or not
 nfa_accepts_word :: (Ord q) => (NFA q) -> String -> Bool
-nfa_accepts_word (NFA q delta q0 f) word = list_has_elem True
+nfa_accepts_word (NFA q delta q0 f) word = elem True
                                            (map (\q -> member q f) (toList (nfa_final_states (NFA q delta q0 f) word)))
-
-list_has_elem :: (Eq q) => q -> [q] -> Bool
-list_has_elem _ [] = False
-list_has_elem elem (head:tail)
-    | head == elem = True
-    | otherwise    = list_has_elem elem tail
