@@ -1,10 +1,10 @@
 
 module NFA
-(   NFA(NFA)
-,   Delta(Delta, EDelta)
+(   NFA (NFA)
+,   Delta (Delta, EDelta)
 ) where
 
-import Data.Set (Set,toList,difference)
+import Data.Set (Set, toList, difference)
 
 data NFA q = NFA             -- Non-deterministic Finite state Automation (Char - set of input symbols)
              (Set q)         -- set of states (Q)
@@ -24,16 +24,16 @@ instance (Show q, Ord q) => Show (NFA q) where
 --                              ++ ", " ++ show (toList f)
 --                              ++ ")"
     show (NFA q delta q0 f) = "digraph Nfa {\n"
-                                  ++ "\t\"\" [shape=none];\n"
-                                  ++ foldl (\s q -> s ++ "\t\"" ++ q ++ "\" [shape=circle];\n")
-                                           ""
-                                           (map (show) (toList (difference q f)))
-                                  ++ foldl (\s q -> s ++ "\t\"" ++ q ++ "\" [shape=doublecircle];\n")
-                                           ""
-                                           (map (show) (toList f))
-                                  ++ "\n\t\"\" -> " ++ show q0 ++ ";\n"
-                                  ++ foldl (++) "" (map (show) (toList delta))
-                                  ++ "}\n"
+                              ++ "\t\"\" [shape=none];\n"
+                              ++ foldl (\s q -> s ++ "\t\"" ++ q ++ "\" [shape=circle];\n")
+                                       ""
+                                       (map (show) (toList (difference q f)))
+                              ++ foldl (\s q -> s ++ "\t\"" ++ q ++ "\" [shape=doublecircle];\n")
+                                       ""
+                                       (map (show) (toList f))
+                              ++ "\n\t\"\" -> " ++ show q0 ++ ";\n"
+                              ++ foldl (++) "" (map (show) (toList delta))
+                              ++ "}\n"
 
 instance Show q => Show (Delta q) where
 --    show (Delta q1 c q2) = "(" ++ show q1 ++ "," ++ show c ++ "," ++ show q2 ++ ")"
