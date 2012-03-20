@@ -1,5 +1,5 @@
 
-module NFA
+module NFA.NFA
 (   NFA (NFA)
 ,   Delta (Delta, EDelta)
 ,   nfa_next_states

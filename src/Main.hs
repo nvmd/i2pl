@@ -1,6 +1,6 @@
 
 import Data.Set
-import NFA
+import NFA.NFA
 
 check_word_for_nfa nfa word = (toList (nfa_final_states nfa word), nfa_accepts_word nfa word)
 
